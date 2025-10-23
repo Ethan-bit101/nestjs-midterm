@@ -29,11 +29,11 @@ export class UsersController {
     // Update user (protected)
     @UseGuards(JwtAuthGuard)
     @Put(':id')
-    async update(@Param('id') id: string,body:any)  {
+    async update(@Param('id') id: string,@Body() body:any)  {
         return this.usersService.updateUser(+id, body);
     }
 
-    // Delete user (protected
+    // Delete user (protected)
     @UseGuards(JwtAuthGuard)
     @Delete(':id')
     async remove(@Param('id') id: string) {
