@@ -19,9 +19,9 @@ export class PositionsController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post()
+  @Post('positions')
   async create(@Body() body: { position_code: string; positions_name: string }) {
-    return this.positionsService.createPosition(body.position_code, body.positions_name);
+    return this.positionsService.createPosition(body.position_code, body.positions_name, body.id);
   }
 
   @UseGuards(JwtAuthGuard)
