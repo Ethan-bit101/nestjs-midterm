@@ -27,7 +27,7 @@ export class UsersService {
     }
     async findById (id:number) {
         const[rows] = await this.pool().execute<RowDataPacket[]>(
-            'SELECT id, username, role, create_at FROM users WHERE id = ?',
+            'SELECT id, username, role, created_at FROM users WHERE id = ?',
             [id]
         );
         return rows[0];
@@ -76,7 +76,7 @@ export class UsersService {
         await this.pool().execute('UPDATE users SET refresh_token = ? WHERE id = ?', [refreshToken, id]);
     }
 
-    async findByRefreshToken(id:number, refreshToken: string) {
+    async findByRefreshToken(refreshToken: string) {
         const [rows] = await this.pool().execute<RowDataPacket[]>(
             'SELECT id, username, role FROM users WHERE refresh-token=?',
             [refreshToken],
@@ -84,3 +84,4 @@ export class UsersService {
         return rows[0];
     }
 }
+
