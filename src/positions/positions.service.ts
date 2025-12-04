@@ -14,7 +14,7 @@ export class PositionsService {
     // -----------------------------
     async createPosition(data: {
         position_code: string;
-        positions_name: string; // Using positions_name from your schema
+        position_name: string; // Using positions_name from your schema
         id: number; // Foreign key to users
     }) {
         const sqlQuery = `
@@ -23,7 +23,7 @@ export class PositionsService {
         `;
         const values = [
             data.position_code,
-            data.positions_name,
+            data.position_name,
             data.id,
         ];
 
@@ -42,7 +42,7 @@ export class PositionsService {
     async getAll() {
         // Select all relevant fields from the positions table
         const [rows] = await this.pool().execute<RowDataPacket[]>(
-            'SELECT position_id, position_code, positions_name, id AS user_id, created_at FROM positions ORDER BY position_id DESC',
+            'SELECT position_id, position_code, position_name, id AS user_id, created_at FROM positions ORDER BY position_id DESC',
         );
         return rows;
     }
@@ -53,7 +53,7 @@ export class PositionsService {
     async findById(id: number) {
         // The primary key for positions is position_id
         const [rows] = await this.pool().execute<RowDataPacket[]>(
-            'SELECT position_id, position_code, positions_name, id AS user_id, created_at FROM positions WHERE position_id = ?',
+            'SELECT position_id, position_code, position_name, id AS user_id, created_at FROM positions WHERE position_id = ?',
             [id]
         );
         if (!rows.length) {
@@ -77,9 +77,9 @@ export class PositionsService {
             values.push(partial.position_code);
         }
 
-        if (partial.positions_name) {
-            fields.push('positions_name = ?'); // Using positions_name from schema
-            values.push(partial.positions_name);
+        if (partial.position_name) {
+            fields.push('position_name = ?'); // Using positions_name from schema
+            values.push(partial.position_name);
         }
         
         if (partial.id !== undefined) {
@@ -135,3 +135,4 @@ export class PositionsService {
         return null;
     }
 }
+
