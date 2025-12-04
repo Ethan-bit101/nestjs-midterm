@@ -4,7 +4,7 @@ import { PositionsController } from './positions.controller';
 import { DatabaseModule } from '../database/database.module';
 
 @Module({
-    imports: [DatabaseModule], // Assuming DatabaseModule is correctly defined
+    imports: [DatabaseModule],
     controllers: [PositionsController],
     providers: [PositionsService],
     exports: [PositionsService],
