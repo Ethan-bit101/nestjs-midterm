@@ -29,7 +29,7 @@ export class PositionsController {
   // CREATE POSITION (protected in the file you sent, open in the users file)
   // I will make it protected as per your provided positions-controller.ts
   // -----------------------------
-  @UseGuards(JwtAuthGuard) 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async create(@Body() body: { position_code: string; position_name: string; id: number; }) {
     // Note: The service will handle insertion, ID comes from the foreign key to the user
@@ -52,7 +52,7 @@ export class PositionsController {
   @Put(':id')
   async update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: { position_code?: string; positions_name?: string; id?: number } // Partial update body
+    @Body() body: { position_code?: string; position_name?: string; id?: number } // Partial update body
   ) {
     // The service handles mapping the URL 'id' to the position_id
     return this.positionsService.updatePosition(id, body);
