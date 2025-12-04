@@ -67,7 +67,7 @@ export class PositionsService {
     // -----------------------------
     async updatePosition(
         position_id: number,
-        partial: { position_code?: string; positions_name?: string; id?: number }
+        partial: { position_code?: string; position_name?: string; id?: number }
     ) {
         const fields: string[] = [];
         const values: any[] = [];
@@ -78,7 +78,7 @@ export class PositionsService {
         }
 
         if (partial.position_name) {
-            fields.push('position_name = ?'); // Using positions_name from schema
+            fields.push('position_name = ?'); // Using position_name from schema
             values.push(partial.position_name);
         }
         
@@ -135,5 +135,6 @@ export class PositionsService {
         return null;
     }
 }
+
 
 
