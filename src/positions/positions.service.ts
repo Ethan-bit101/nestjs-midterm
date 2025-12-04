@@ -14,11 +14,11 @@ export class PositionsService {
     // -----------------------------
     async createPosition(data: {
         position_code: string;
-        position_name: string; // Using positions_name from your schema
+        position_name: string; // Using position_name from your schema
         id: number; // Foreign key to users
     }) {
         const sqlQuery = `
-            INSERT INTO positions (position_code, positions_name, id)
+            INSERT INTO positions (position_code, position_name, id)
             VALUES (?, ?, ?)
         `;
         const values = [
@@ -135,4 +135,5 @@ export class PositionsService {
         return null;
     }
 }
+
 
