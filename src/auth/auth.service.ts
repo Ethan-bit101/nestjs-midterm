@@ -58,8 +58,8 @@ export class AuthService {
             });
             await this.usersService.setRefreshToken(found.id, newRefresh);
             return {
-                accessToken, refreshToken};
-        } catch (error) {
+                accessToken, refreshToken: newRefresh};
+        } catch (err) {
             throw new UnauthorizedException('Could not refresh tokens');
         }
     }
