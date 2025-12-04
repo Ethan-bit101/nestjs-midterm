@@ -5,6 +5,6 @@ import { DatabaseModule } from './database/database.module';
 import { PositionsModule } from './positions/positions.module'; // imports PositionsModule from the positions module
 
 @Module({
-    imports: [DatabaseModule, UsersModule,PositionsModule, AuthModule], // organizes application into modules
+    imports: [DatabaseModule, UsersModule, AuthModule, PositionsModule,], // organizes application into modules
 })
 export class AppModule {}
