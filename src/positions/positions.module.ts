@@ -5,8 +5,8 @@ import { DatabaseModule } from '../database/database.module';
 
 @Module({
     imports: [DatabaseModule],
-    controllers: [PositionsController], //  imports PositionsController
-    providers: [PositionsService], // imports PositionController
-    exports: [PositionsService], // imports PositionsService
+    controllers: [PositionsController],
+    providers: [PositionsService],
+    exports: [PositionsService],
 })
 export class PositionsModule {}
