@@ -49,5 +49,3 @@ export class PositionsController {
     return this.positionsService.deletePosition(id);
   }
 }
-positions.controller.ts
-Displaying positions.controller.ts.
