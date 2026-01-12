@@ -4,9 +4,9 @@ import { PositionsController } from './positions.controller';
 import { DatabaseModule } from '../database/database.module';
 
 @Module({
-    imports: [DatabaseModule],
-    controllers: [PositionsController],
-    providers: [PositionsService],
-    exports: [PositionsService],
+  imports: [DatabaseModule],
+  controllers: [PositionsController],
+  providers: [PositionsService],
+  exports: [PositionsService],
 })
 export class PositionsModule {}
