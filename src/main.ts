@@ -1,14 +1,17 @@
-import 'reflect-metadata';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import * as dotenv from 'dotenv';
-
 async function bootstrap() {
     dotenv.config();
-    const app = await NestFactory.create(AppModule, { cors: true });
-    const port = process.env.PORT || 3000;
-    await app.listen(+port);
-    console.log(`Server listening on http://localhost:${port}`);
-}
+    const app = await NestFactory.create(AppModule);
 
-bootstrap();
+    app.enableCors({
+        origin: 'https://p8-xi.vercel.app',
+        credentials: true,
+    });
+
+    // Render automatically sets process.env.PORT
+    const port = process.env.PORT || 3000;
+    
+    // IMPORTANT: Bind to '0.0.0.0' for Render/Cloud environments
+    await app.listen(port, '0.0.0.0'); 
+    
+    console.log(`Application is running on: ${await app.getUrl()}`);
+}
